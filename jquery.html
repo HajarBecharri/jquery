@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calc.css">
+  <script src="jquery-3.6.4.js"></script> 
+  <!--<script src="https://code.jquery.com/jquery-3.6.4.js"></script>-->
+</head>
+<body>
+    <script type="text/javascript">
+
+        //the first text
+        $(document).ready(function(){   //$ mean that we work wth jquery
+
+            $("p").text("welcome to jquery");
+        })
+
+        //the selector
+         
+    //$("*")	All elements
+   //$("#salam")	The element with id="salam"
+   //	$(".intro")	All elements with class="intro"
+   //$(".intro,.demo")	All elements with the class "intro" or "demo"
+   //$("p")	All <p> elements
+   //el1,el2,el3	$("h1,div,p")	All <h1>, <div> and <p> elements
+
+        $(function(){
+            
+            
+            $(".class1").hide(300).show(100); // hide it in 300s then show it in 100 
+            $(".class1").slideUp(300).delay(1000).slideDown(100); //hide it from bottom then wait a 1000s then show it from Up
+
+            //the jquery function like hide and show.. can support two parameters at less one for the instance of applacation ant second for the callfunction due to the jqueryfunction 
+            //the function can be defind it in the jquery function :hide(function(){}}) or behind (in the balise script)and call it inside : hide(myfunction)
+            $(".class").css({
+            color:'red',
+            fontWeight:'bold'})
+             //change containt
+
+            $("h1").html('<strong>After change</strong>');
+
+            //use event
+            $(".btn").on('click',function(){
+
+                $('.class1').slideToggle();
+            
+            });
+            $(".class").on('mouseover',function(){
+
+              $('.class1').fadeToggle();
+
+            //DRY dont repeat yourself
+
+            $(".DRY").on('mouseover',function(){
+
+                var id= $(this).attr('id');
+                alert(id);
+
+                $('#'+id).toggle();
+            })
+
+            //DOM
+
+            /*$('li')
+            jQuery.fn.init(6) [li.li1, li.li2, li.li3, li.li31, li.li32, li.li33, prevObject: jQuery.fn.init(1)]
+            $('li').eq(2)
+            jQuery.fn.init [li.li3, prevObject: jQuery.fn.init(6)]
+            $('li').eq(2).parent()
+            jQuery.fn.init [ul, prevObject: jQuery.fn.init(1)]
+            $('li').eq(5).parent()
+
+            jQuery.fn.init [ul, prevObject: jQuery.fn.init(1)]
+            $('li').eq(5).parent().prev()
+            jQuery.fn.init [prevObject: jQuery.fn.init(1)]
+            $('li').eq(5).prev()
+            jQuery.fn.init [li.li32, prevObject: jQuery.fn.init(1)]
+            $('li').eq(5).next()
+            jQuery.fn.init [prevObject: jQuery.fn.init(1)]
+            $("li").eq(2);*/
+ 
+            
+            $("li").on('click',function(){
+
+           $('.class').next().hide()
+           //$(this).siblings().addClass("special")
+           $(this).removeClass("special")
+        });
+
+        $("ul").on('click',function(){
+
+            
+            $(this).find(".salam").remove()
+
+            if($(this).is  /* or not */('.special')){
+                alert("special");
+            
+            }
+            else {
+                alert("not special")
+            }
+            
+            $(this).find("li").filter(".special").removeClass(".special")  //find is too fast cause is search in the curent this nt in the whole page
+});
+
+
+
+          
+});
+
+            
+
+
+        })
+
+    
+
+
+          
+    </script>
+    
+    
+    <h1> let's talk </h1>
+
+    <div class="class">
+        <p>hey guys</p>
+    </div>
+    <div class="class1">it is amazing</div>
+    
+    <button class="btn">click</button>
+
+    
+     <button class="DRY" id="1">btn1</button>
+     <button class="DRY" id="2">btn2</button>
+
+     <ul>
+        <li>
+            <button class="salam">f</button>
+        </li>
+        <li class="special">
+        1
+        </li>
+        <li class="li2">
+        2
+        </li>
+        <li class="li3">
+        <ul>
+            <li class="li31">op1</li>
+            <li class="li32">op2</li>
+            <li class="li33">op3</li>
+        </ul>
+        </li>
+     </ul>
+    
+    
+    <p></p>
+</body>
+</html>
